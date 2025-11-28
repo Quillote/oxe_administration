@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+/* Tu CSS global encima o debajo, como prefieras */
+body {
+  @apply bg-slate-900 text-slate-100 antialiased;
+}
