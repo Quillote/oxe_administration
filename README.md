@@ -1,73 +1,169 @@
-# React + TypeScript + Vite
+🛠️ oxe_administration_ui
+Dashboard de Administración para Servidor FiveM (ox_core + Overextended)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es la interfaz web/NUI oficial del panel oxe_administration, un sistema avanzado para administrar servidores de FiveM que utilizan:
 
-Currently, two official plugins are available:
+ox_core
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ox_inventory
 
-## React Compiler
+ox_lib
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+ox_target
 
-## Expanding the ESLint configuration
+(Compatible también con Qbox/QBX Core en el backend)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+El objetivo del proyecto es ofrecer un dashboard moderno, profesional y modular, inspirado en paneles realistas de administración tipo txAdmin, pero enfocado a la gestión profunda de frameworks como Overextended.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+🚀 Características actuales (UI Mock)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+La UI incluye los siguientes módulos completamente diseñados en React + Tailwind 4:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+✔ Overview (Panel General)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Tarjetas estadísticas
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Actividad reciente
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Estado de servicios Overextended
+
+Resumen rápido de logs
+
+✔ Jugadores
+
+Lista de jugadores conectados
+
+Información de job, ping, identifier
+
+Acciones: Ver / SetJob / TP / Ban (mock)
+
+✔ Trabajos / Grupos
+
+Vista completa de grupos (jobs, gangs…)
+
+Rangos, permisos y estructura
+
+UI de edición (mock)
+
+✔ Inventario / Ítems
+
+Lista estilo ox_inventory default
+
+Name, label, weight, stack, close, consume
+
+Buscador y filtros
+
+✔ Vehículos
+
+Vehículos en mundo / garaje / impound
+
+Info de motor, carrocería, fuel
+
+Acciones administrativas (mock)
+
+✔ Puertas
+
+Puertas estilo ox_doorlock
+
+Estado, zona, tipo, permisos
+
+Lock/Unlock, edición (mock)
+
+✔ Logs / Auditoría
+
+Acciones admin, jobs, dinero, items, vehículos, sistema
+
+Filtros por tipo y nivel
+
+Vista compacta estilo dashboard
+
+🧩 Tecnologías usadas
+
+React 19 + TypeScript
+
+Vite 7
+
+TailwindCSS v4
+
+ESLint moderno
+
+Arquitectura modular por paneles en /components
+
+📁 Estructura del proyecto
+oxe_administration_ui/
+│
+├── src/
+│   ├── components/
+│   │   ├── OverviewPanel.tsx
+│   │   ├── PlayersTable.tsx
+│   │   ├── JobsPanel.tsx
+│   │   ├── ItemsPanel.tsx
+│   │   ├── VehiclesPanel.tsx
+│   │   ├── DoorsPanel.tsx
+│   │   └── LogsPanel.tsx
+│   │
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── index.css
+│
+├── index.html
+├── package.json
+├── tailwind.config.cjs (opcional)
+└── README.md
+
+⚙️ Cómo ejecutar en tu PC
+npm install
+npm run dev
+
+
+Se abrirá en:
+
+http://localhost:5173
+
+🧱 Build de producción (para NUI en FiveM)
+npm run build
+
+
+Esto generará una carpeta dist/ lista para usar en el recurso de FiveM:
+
+resources/[admin]/oxe_administration/ui/dist
+
+🔮 Próximos pasos (Roadmap)
+
+Integración real con ox_core vía NUI callbacks
+
+Autenticación por roles (admin, superadmin, police boss…)
+
+Edición real de ítems, jobs, puertas
+
+Log completo con servidor (webhooks, sqlite, mysql)
+
+Live-data del servidor (jugadores, recursos, memory usage)
+
+Control avanzado: Freeze, revive, jail, espectador, warn
+
+Soporte para Qbox / QBX en backend
+
+API REST opcional para dashboards externos
+
+🤝 Contribuciones
+
+El proyecto es actualmente privado y en desarrollo activo.
+Más adelante se abrirán pull requests para módulos externos.
+
+🧑‍💻 Autor
+
+Adrian (Beast Dev)
+Desarrollo avanzado para FiveM, Overextended & Qbox.
+
+🎉 Listo, tienes un README de nivel PRO
+
+Si quieres:
+
+Que añada capturas
+
+Que ponga badges (npm, vite, react)
+
+Que meta instrucciones para colaboradores
+
+Que prepare README en inglés también
